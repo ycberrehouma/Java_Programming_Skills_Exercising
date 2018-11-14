@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.LinkedList;
 
 class GraphB
 {
@@ -27,6 +28,7 @@ class GraphB
             s=queue.poll();
             System.out.println(s+" ");
             Iterator<Integer> i = adj[s].listIterator();
+
             while(i.hasNext()){
                 int n = i.next();
                 if(!visited[n]){

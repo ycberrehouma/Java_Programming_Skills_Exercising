@@ -1,42 +1,51 @@
+import java.util.LinkedList;
 import java.util.*;
-public class test{
+ class test {
+
     private int V;
     private  LinkedList<Integer> adj[];
 
-    test(int v) {
-        V = v;
-        adj = new LinkedList[V];
-        for (int i = 0; i < v; i++) {
-            adj[i] = new LinkedList();
+    test(int v){
+        V=v;
+        adj=new LinkedList[v];
+        for (int i=0;i<v;i++){
+            adj[i]=new LinkedList<>();
         }
     }
     void addEdge(int v,int w){
         adj[v].add(w);
-        }
-        void DFSUtil(int v,boolean visited[]){
-        visited[v] = true;
-        System.out.print(v+" ");
-        Iterator<Integer> i=adj[v].listIterator();
-            while (i.hasNext()) {
-                int n= i.next();
-                if(!visited[n]){
-                   DFSUtil(n,visited);
-                }
-            }
-        }
-
-
-
-        void DFS(int v){
+    }
+    void DFS(int s){
         boolean visited[]=new boolean[V];
-        DFSUtil(v,visited);
+        visited[s]=true;
+        LinkedList<Integer> q=new LinkedList<>();
+        q.add(s);
+
+       while(q.size()!=0){
+           s=q.poll();
+           System.out.println(s+"");
+           visited[s]=true;
+           ListIterator<Integer>i = adj[s].listIterator();
+
+           while(i.hasNext()){
+               int n=i.next();
+               if(!visited[n]) {
+                   visited[n] = true;
+                   q.add(n);
+               }
+           }
+
 
         }
+
+
+    }
+
 
 
     public static void main(String args[])
     {
-        test g = new test(4);
+        test g =new test(4);
 
         g.addEdge(0, 1);
         g.addEdge(0, 2);
@@ -45,10 +54,9 @@ public class test{
         g.addEdge(2, 3);
         g.addEdge(3, 3);
 
-        System.out.println("Following is Depth First Traversal "+
-                "(starting from vertex 2)");
-
         g.DFS(2);
+
+
     }
 
 }
