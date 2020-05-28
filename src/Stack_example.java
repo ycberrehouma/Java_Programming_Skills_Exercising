@@ -9,7 +9,6 @@ public class Stack_example {
         stack.push( "test");
         stack.push( "tist");
         stack.push( "tost");
-        stack.push( "yalla");
 
         System.out.println( "This is our initial stack  "+stack);
         System.out.println("This is the size our initial stack " +stack.size());
